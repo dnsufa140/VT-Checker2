@@ -1,56 +1,42 @@
 ```
-# Android build outputs
+# Android build artifacts
 build/
 .gradle/
 *.apk
 *.aar
-*.jar
+*.dex
 
-# Android Studio files
+# Android Studio and IDE files
 .idea/
 *.iml
 *.iws
-*.log
+*.db-shm
+*.db-wal
 
-# Android resource files
-*/res/raw/
-*/res/values/strings.xml.bak
-
-# Gradle
-.gradle/
-gradle/
-
-# Local configuration file (sdk path, etc)
+# Local configuration file (sdk path, signing keys, etc.)
 local.properties
 
-# Keystore
-*.keystore
-*.jks
-
-# Log Files
+# Log files
 *.log
 
-# Code coverage
-coverage/
-*.gcov
-*.lcov
-*.profdata
-
-# Unit test reports
-test-results/
-*.xml
-
-# Temporary files
+# Temp files
 *.tmp
-*.temp
 *.swp
 
-# Environment variables
+# Environment files
 .env
 .env.local
-.env.*
+*.env.*
 
-# OS generated files
-.DS_Store
-Thumbs.db
+# Coverage reports
+coverage/
+*.coverage
+htmlcov/
+
+# Python cache (if any Python files exist in project)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
 ```

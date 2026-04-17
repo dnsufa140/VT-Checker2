@@ -277,10 +277,19 @@ class MainActivity : AppCompatActivity() {
     private fun queryVirusTotal(hash: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val client = OkHttpClient()
+                // Get API key from BuildConfig
+                val apiKey = BuildConfig.VIRUSTOTAL_API_KEY
                 
-                // TODO: Replace with your actual VirusTotal API key
-                val apiKey = "YOUR_VIRUSTOTAL_API_KEY"
+                if (apiKey.isEmpty() || apiKey == "YOUR_VIRUSTOTAL_API_KEY") {
+                    withContext(Dispatchers.Main) {
+                        detectionTextView.text = "Ошибка: API ключ не настроен.\nПожалуйста, добавьте VIRUSTOTAL_API_KEY в настройки сборки."
+                        progressBar.visibility = View.GONE
+                        selectFileButton.isEnabled = true
+                    }
+                    return@launch
+                }
+                
+                val client = OkHttpClient()
                 
                 val request = Request.Builder()
                     .url("https://www.virustotal.com/api/v3/files/$hash")

@@ -31,7 +31,7 @@ jobs:
     - name: Build Debug APK
       run: |
         echo "=== Starting Gradle Build ==="
-        ./gradlew assembleDebug --stacktrace --no-daemon --info
+        ./gradlew assembleDebug -PVT_API_KEY="${{ secrets.VIRUSTOTAL_API_KEY }}" --stacktrace --no-daemon --info
         echo "=== Build Finished ==="
         echo "Checking output directory:"
         ls -R app/build/outputs/apk/ || true
